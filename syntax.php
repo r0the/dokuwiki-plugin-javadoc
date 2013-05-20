@@ -72,7 +72,7 @@ class syntax_plugin_javadoc extends DokuWiki_Syntax_Plugin {
             case DOKU_LEXER_ENTER :
                 $site = trim(substr($match,8,-1));
                 if (strlen($site) == 0) {
-                    return array($state, "jdk6");
+                    return array($state, "jdk7");
                 }
                 else {
                     return array($state, $site);
@@ -89,9 +89,10 @@ class syntax_plugin_javadoc extends DokuWiki_Syntax_Plugin {
      */
     function render($mode, &$renderer, $indata) {
         $sites = array (
-            'jdk6' => 'http://java.sun.com/javase/6/docs/api',
-            'doolin' => 'http://doolin-guif.sourceforge.net/apidocs',
-            'commons-beanutil' => 'http://commons.apache.org/beanutils/commons-beanutils-1.7.0/docs/api/'
+           'jdk6' => 'http://docs.oracle.com/javase/6/docs/api',
+           'jdk7' => 'http://docs.oracle.com/javase/7/docs/api',
+           'doolin' => 'http://doolin-guif.sourceforge.net/apidocs',
+           'commons-beanutil' => 'http://commons.apache.org/beanutils/commons-beanutils-1.7.0/docs/api/'
         );
         if ($mode == 'xhtml'){
             list($state, $data) = $indata;
