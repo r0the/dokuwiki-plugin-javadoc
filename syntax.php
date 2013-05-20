@@ -13,17 +13,6 @@ require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_javadoc extends DokuWiki_Syntax_Plugin {
 
-    function getInfo(){
-        return array(
-            'author' => 'Damien Coraboeuf',
-            'email'  => 'dcoraboeuf@yahoo.fr',
-            'date'   => '2007-09-19',
-            'name'   => 'Javadoc Plugin 1.0.0 (Beta 01)',
-            'desc'   => 'Add Javadoc link Capability',
-            'url'    => 'http://doolin.x10hosting.com/wiki/doku.php?id=plugin:javadoc',
-        );
-    }
-
     /**
      * What kind of syntax are we?
      */
