@@ -72,7 +72,11 @@ class syntax_plugin_javadoc extends DokuWiki_Syntax_Plugin {
             case DOKU_LEXER_ENTER :
                 $site = trim(substr($match,8,-1));
                 if (strlen($site) == 0) {
-                    return array($state, "jdk7");
+                    return array($state, "jdk");
+                }
+                // Backwards compatibility
+                else if ($site == 'jdk6') {
+                    return array($state, 'jdk');
                 }
                 else {
                     return array($state, $site);
@@ -88,17 +92,42 @@ class syntax_plugin_javadoc extends DokuWiki_Syntax_Plugin {
      * Create output
      */
     function render($mode, &$renderer, $indata) {
-        $sites = array (
-           'jdk6' => 'http://docs.oracle.com/javase/6/docs/api',
-           'jdk7' => 'http://docs.oracle.com/javase/7/docs/api',
-           'doolin' => 'http://doolin-guif.sourceforge.net/apidocs',
-           'commons-beanutil' => 'http://commons.apache.org/beanutils/commons-beanutils-1.7.0/docs/api/'
+        $sites = array(
+            'jdk' => 'http://docs.oracle.com/javase/7/docs/api',
+            // Backwards compatibility
+            'doolin' => 'http://www.doolin-guif.net/reports/apidocs',
+            // Backwards compatibility
+            'commons-beanutil' => 'commons.apache.org/proper/commons-beanutils/api'
         );
+        // Add configured default Javadoc URL to sites
+        $jdkurl = $this->getConf('jdk');
+        if (!empty($jdkurl)) {
+            $sites['jdk'] = $jdkurl;
+        }
+
+        // Add configured user Javadoc URLs to sites
+        for ($i = 1; $i <= 5; $i++) {
+            $key = 'user'.$i;
+            $config = explode(' ', $this->getConf($key));
+            if (count($config) == 1) {
+                $url = $config[0];
+            }
+            else {
+                // Alias defined, use it instead of key
+                $key = $config[0];
+                $url = $config[1];
+            }
+
+            if (!empty($url)) {
+                $sites[$key] = $url;
+            }
+        }
+
         if ($mode == 'xhtml'){
             list($state, $data) = $indata;
             switch ($state) {
                 case DOKU_LEXER_ENTER :
-                    $prefix = $sites[$data];
+                    $prefix =  $sites[$data];
                     $renderer->doc .= '<a class="javadoc" target="_blank" href="'.$prefix;
                     break;
                 case DOKU_LEXER_UNMATCHED :
