@@ -54,7 +54,7 @@ class syntax_plugin_javadoc extends DokuWiki_Syntax_Plugin {
      * Connect pattern to lexer
      */
     function connectTo($mode) {
-        $this->Lexer->addEntryPattern('<javadoc.*?>(?=.*?</javadoc>)',$mode,'plugin_javadoc');
+        $this->Lexer->addEntryPattern('<javadoc\b.*?>(?=.*?</javadoc>)',$mode,'plugin_javadoc');
     }
 
     /**
