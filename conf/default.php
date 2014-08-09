@@ -6,7 +6,7 @@
  * @author     Stefan Rothe <info@stefan-rothe.ch>
  */
 
-$conf['jdk']   = 'http://docs.oracle.com/javase/7/docs/api';
+$conf['jdk']   = 'http://docs.oracle.com/javase/8/docs/api';
 $conf['user1'] = '';
 $conf['user2'] = '';
 $conf['user3'] = '';
