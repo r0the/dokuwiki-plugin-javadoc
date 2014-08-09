@@ -1,4 +1,12 @@
-.javadoc {
+a.javadoc {
+    padding-left: 4px;
+	padding-right: 4px;
+    font-family: Consolas,monospace;
+	font-size: 85%;
+}
+
+a.javadoc.icon {
     background: transparent url(images/javadoc.png) 0px 0px no-repeat;
     padding-left: 16px;
 }
+

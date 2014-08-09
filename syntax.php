@@ -123,12 +123,19 @@ class syntax_plugin_javadoc extends DokuWiki_Syntax_Plugin {
             }
         }
 
+        if ($this->getConf('show_icon')) {
+            $icon = ' icon';
+        }
+        else {
+            $icon = '';
+        }
+
         if ($mode == 'xhtml'){
             list($state, $data) = $indata;
             switch ($state) {
                 case DOKU_LEXER_ENTER :
                     $prefix =  $sites[$data];
-                    $renderer->doc .= '<a class="javadoc" target="_blank" href="'.$prefix;
+                    $renderer->doc .= '<a class="javadoc'.$icon.'" target="_blank" href="'.$prefix;
                     break;
                 case DOKU_LEXER_UNMATCHED :
                     // Get the token and the text, separated by an optional "|"
@@ -152,7 +159,7 @@ class syntax_plugin_javadoc extends DokuWiki_Syntax_Plugin {
                         $methodName = substr($token, $indexOfMethodSep + 1);
                         $url = "/".$className.".html#".$methodName;
                     }
-                    $renderer->doc .= $url.'"><code>'.$text.'</code>';
+                    $renderer->doc .= $url.'">'.$text;
                     break;
                 case DOKU_LEXER_EXIT :
                     $renderer->doc .= "</a>";

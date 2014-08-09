@@ -12,3 +12,6 @@ $meta['user2'] = array('string');
 $meta['user3'] = array('string');
 $meta['user4'] = array('string');
 $meta['user5'] = array('string');
+$meta['show5'] = array('string');
+$meta['show_icon']  = array('onoff');
+

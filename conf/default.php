@@ -12,3 +12,5 @@ $conf['user2'] = '';
 $conf['user3'] = '';
 $conf['user4'] = '';
 $conf['user5'] = '';
+$conf['show_icon'] = 1;
+
