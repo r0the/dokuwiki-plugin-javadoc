@@ -1,7 +1,7 @@
 base   javadoc
 author Stefan Rothe
 email  info@stefan-rothe.ch
-date   2013-05-20
+date   2014-08-10
 name   Javadoc Plugin
 desc   Adds Javadoc link capability (previous authors: Damien Coraboeuf)
 url    http://www.dokuwiki.org/plugin:javadoc
