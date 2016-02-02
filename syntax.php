@@ -67,7 +67,7 @@ class syntax_plugin_javadoc extends DokuWiki_Syntax_Plugin {
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
         switch ($state) {
             case DOKU_LEXER_ENTER :
                 $site = trim(substr($match,8,-1));
@@ -91,7 +91,7 @@ class syntax_plugin_javadoc extends DokuWiki_Syntax_Plugin {
     /**
      * Create output
      */
-    function render($mode, &$renderer, $indata) {
+    function render($mode, Doku_Renderer $renderer, $indata) {
         $sites = array(
             'jdk' => 'http://docs.oracle.com/javase/7/docs/api',
             // Backwards compatibility
